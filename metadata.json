@@ -1,0 +1,6 @@
+{
+  "name": "CareerPilot AI",
+  "description": "An advanced AI Resume & Interview Coach platform.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": []
+}
