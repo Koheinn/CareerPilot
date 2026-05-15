@@ -1,4 +1,5 @@
 import { useState } from "react";
+import type { FormEvent } from "react";
 import { UserCircle, KeyRound, CheckCircle, AlertCircle } from "lucide-react";
 
 export default function Profile({ user }: { user: any }) {
@@ -9,7 +10,7 @@ export default function Profile({ user }: { user: any }) {
     const [success, setSuccess] = useState("");
     const [loading, setLoading] = useState(false);
 
-    const handleChangePassword = async (e: React.FormEvent) => {
+    const handleChangePassword = async (e: FormEvent) => {
         e.preventDefault();
         setError("");
         setSuccess("");

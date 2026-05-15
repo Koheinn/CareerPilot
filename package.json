@@ -4,15 +4,16 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "tsx server.ts",
-    "build": "prisma generate && vite build",
-    "preview": "vite preview",
-    "clean": "rm -rf dist",
-    "lint": "tsc --noEmit",
-    "postinstall": "prisma generate",
-    "start": "node dist/server.cjs",
-    "push": "prisma db push"
-  },
+  "dev": "tsx server.ts",
+  "build": "prisma generate && vite build",
+  "preview": "vite preview",
+  "lint": "tsc --noEmit",
+  "postinstall": "prisma generate",
+  "start": "tsx server.ts",
+  "push": "prisma db push",
+  "docker:build": "docker build -t careerpilot:latest .",
+  "docker:run": "docker-compose up -d"
+},
   "dependencies": {
     "@google/genai": "^1.29.0",
     "@huggingface/inference": "^4.13.15",
@@ -24,6 +25,8 @@
     "cookie-parser": "^1.4.7",
     "dotenv": "^17.2.3",
     "express": "^4.22.1",
+    "firebase": "^12.13.0",
+    "firebase-admin": "^13.9.0",
     "framer-motion": "^12.38.0",
     "jsonwebtoken": "^9.0.3",
     "lucide-react": "^0.546.0",
@@ -35,6 +38,7 @@
     "react-dom": "^19.0.1",
     "react-router-dom": "^7.15.0",
     "recharts": "^3.8.1",
+    "resend": "^6.12.3",
     "tailwind-merge": "^3.6.0",
     "vite": "^6.2.3"
   },

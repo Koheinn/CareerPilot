@@ -1,6 +1,8 @@
 import { useState } from "react";
+import type { ChangeEvent } from "react";
 import { motion } from "framer-motion";
 import { Upload, FileText, CheckCircle2, AlertCircle, Loader2, Sparkles, ChevronRight, Target } from "lucide-react";
+import CircularProgress from "../components/CircularProgress";
 
 export default function ResumeAnalyzer() {
   const [content, setContent] = useState("");
@@ -8,7 +10,7 @@ export default function ResumeAnalyzer() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<{score: number, feedback: string} | null>(null);
 
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileUpload = (e: ChangeEvent<HTMLInputElement>) => {
       if (e.target.files && e.target.files[0]) {
           setFile(e.target.files[0]);
           setContent(""); // Clear text if file is uploaded
@@ -49,9 +51,15 @@ export default function ResumeAnalyzer() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="max-w-3xl mx-auto">
-        <div className="mb-10 text-center">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">AI Resume Analyzer</h1>
-          <p className="text-slate-400">Upload your PDF or paste text to get a comprehensive ATS review.</p>
+        <div className="mb-10 text-center relative rounded-2xl overflow-hidden">
+          <div className="absolute inset-0 z-0"
+            style={{ backgroundImage: "url('https://cdn.pixabay.com/photo/2018/03/10/12/00/paper-3213924_1280.jpg')", backgroundSize: 'cover', backgroundPosition: 'center' }}
+          />
+          <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#050505]/40 via-[#050505]/70 to-[#050505]" />
+          <div className="relative z-10 py-12 px-4">
+            <h1 className="text-3xl md:text-4xl font-bold mb-4">AI Resume Analyzer</h1>
+            <p className="text-slate-400">Upload your PDF or paste text to get a comprehensive ATS review.</p>
+          </div>
         </div>
 
         <motion.div 
@@ -118,9 +126,9 @@ export default function ResumeAnalyzer() {
                  </h3>
                  <p className="text-sm text-slate-400 mt-1">Based on keyword matching and format structure</p>
                </div>
-               <div className="relative w-24 h-24 shrink-0 radial-progress flex items-center justify-center rounded-full border-[6px] border-indigo-500/20 shadow-[inset_0_0_20px_rgba(99,102,241,0.2)]">
-                  <div className="absolute inset-0 rounded-full border-[6px] border-cyan-400 border-l-transparent border-b-transparent transform rotate-45"></div>
-                  <span className="text-3xl font-black text-white relative z-10">{result.score}</span>
+               <div className="relative shrink-0 flex items-center justify-center">
+                  <CircularProgress value={result.score} size={96} stroke={6} />
+                  <span className="absolute text-3xl font-black text-white">{result.score}</span>
                </div>
             </div>
             

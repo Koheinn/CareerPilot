@@ -8,6 +8,7 @@ import ResumeAnalyzer from "./pages/ResumeAnalyzer";
 import JobMatcher from "./pages/JobMatcher";
 import MockInterview from "./pages/MockInterview";
 import Profile from "./pages/Profile";
+import CareerConsult from "./pages/CareerConsult";
 
 export default function App() {
   const [user, setUser] = useState<{ id: string; name: string; email: string } | null>(null);
@@ -43,6 +44,7 @@ export default function App() {
           <Route path="analyzer" element={user ? <ResumeAnalyzer /> : <Navigate to="/auth" />} />
           <Route path="matcher" element={user ? <JobMatcher /> : <Navigate to="/auth" />} />
           <Route path="interview" element={user ? <MockInterview user={user} /> : <Navigate to="/auth" />} />
+          <Route path="consult" element={user ? <CareerConsult /> : <Navigate to="/auth" />} />
           <Route path="profile" element={user ? <Profile user={user} /> : <Navigate to="/auth" />} />
         </Route>
       </Routes>

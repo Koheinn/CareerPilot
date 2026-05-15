@@ -1,21 +1,65 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { BrainCircuit, LineChart, FileText, ChevronRight, CheckCircle2 } from "lucide-react";
+import { BrainCircuit, LineChart, FileText, ChevronRight, Video, Sparkles, LayoutDashboard } from "lucide-react";
+
+const FEATURES = [
+  {
+    title: "ATS Resume Scoring",
+    description: "Instantly see how your resume performs against top applicant tracking systems with deep AI keyword analysis.",
+    icon: FileText,
+    color: "text-blue-400",
+    image: "https://cdn.pixabay.com/photo/2018/03/10/12/00/paper-3213924_1280.jpg",
+  },
+  {
+    title: "AI Chat Interview",
+    description: "Practice behavioral & technical questions tailored to your target role with real-time AI feedback in a text-based interview.",
+    icon: BrainCircuit,
+    color: "text-purple-400",
+    image: "https://cdn.pixabay.com/photo/2018/09/27/09/22/artificial-intelligence-3706562_1280.jpg",
+  },
+  {
+    title: "Video Mock Interview",
+    description: "Experience a real interview with your webcam and microphone. The AI asks questions aloud and listens to your spoken answers.",
+    icon: Video,
+    color: "text-cyan-400",
+    image: "https://cdn.pixabay.com/photo/2017/08/10/08/47/laptop-2620118_1280.jpg",
+  },
+  {
+    title: "Job Fit Analytics",
+    description: "See exactly how well your resume matches a job description with our ATS scoring engine and get actionable improvement tips.",
+    icon: LineChart,
+    color: "text-indigo-400",
+    image: "https://cdn.pixabay.com/photo/2016/11/27/21/42/stock-1863880_1280.jpg",
+  },
+  {
+    title: "AI Career Consultant",
+    description: "Chat with your personal AI career advisor — get expert guidance on salary negotiation, career transitions, skill gaps, and more.",
+    icon: Sparkles,
+    color: "text-amber-400",
+    image: "https://cdn.pixabay.com/photo/2019/04/29/07/04/team-4165306_1280.jpg",
+  },
+  {
+    title: "Progress Dashboard",
+    description: "Track all your resume scores, mock interview results, and activity history in one unified dashboard with visual score trends.",
+    icon: LayoutDashboard,
+    color: "text-green-400",
+    image: "https://cdn.pixabay.com/photo/2016/11/19/14/00/code-1839406_1280.jpg",
+  },
+];
 
 export default function Landing() {
   return (
     <div className="relative overflow-hidden pt-10 min-h-[calc(100vh-5rem)] flex items-center">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 z-0 opacity-20"
+      {/* Hero Background */}
+      <div
+        className="absolute inset-0 z-0 opacity-25"
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop')",
+          backgroundImage: "url('https://cdn.pixabay.com/photo/2016/11/19/14/00/code-1839406_1280.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          backgroundRepeat: "no-repeat"
         }}
       />
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#050505]/50 via-[#050505]/80 to-[#050505]" />
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#050505]/60 via-[#050505]/80 to-[#050505]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 text-center relative z-10 w-full">
         <motion.div
@@ -44,11 +88,11 @@ export default function Landing() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-4 max-w-2xl mx-auto text-xl text-slate-300 mb-10 text-shadow-sm"
+          className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-slate-300 mb-10"
         >
-          An elite AI resume analyzer and interview coach. Land 5x more interviews with data-driven ATS optimization and real-time behavioral coaching.
+          AI resume analysis, ATS matching, chat & video mock interviews, and a personal career advisor — all in one platform.
         </motion.p>
-        
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -65,52 +109,44 @@ export default function Landing() {
             href="#features"
             className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-[#E0E0E0] bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-all backdrop-blur-md"
           >
-            View Demo
+            View Features
           </a>
         </motion.div>
 
         {/* Feature Grid */}
-        <motion.div 
-          initial={{ opacity: 0 }} 
-          animate={{ opacity: 1 }} 
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="mt-32 grid md:grid-cols-3 gap-8 text-left"
+          className="mt-24 md:mt-32 text-left"
           id="features"
         >
-          {[
-            {
-              title: "ATS Resume Scoring",
-              description: "Instantly see how your resume performs against top applicant tracking systems with deep AI keyword analysis.",
-              icon: FileText,
-              color: "text-blue-400",
-              bg: "bg-blue-500/10"
-            },
-            {
-              title: "AI Interview Coach",
-              description: "Practice with custom behavioral & technical questions tailored to your target role using real-time feedback.",
-              icon: BrainCircuit,
-              color: "text-purple-400",
-              bg: "bg-purple-500/10"
-            },
-            {
-              title: "Job Fit Analytics",
-              description: "Track your progress. See your estimated chance of landing the interview through our proprietary matching model.",
-              icon: LineChart,
-              color: "text-indigo-400",
-              bg: "bg-indigo-500/10"
-            }
-          ].map((feature, i) => (
-            <div key={i} className="relative group p-6 rounded-2xl bg-[#0A0A0A]/80 backdrop-blur-md border border-white/10 hover:border-white/20 transition-all overflow-hidden shadow-2xl">
-              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-slate-900 border border-white/10`}>
-                <feature.icon className={`w-6 h-6 ${feature.color}`} />
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Everything you need to land the job</h2>
+            <p className="text-slate-400 max-w-xl mx-auto">Six powerful AI tools working together to accelerate your career.</p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {FEATURES.map((feature, i) => (
+              <div key={i} className="relative group rounded-2xl bg-[#0A0A0A]/80 backdrop-blur-md border border-white/10 hover:border-white/20 transition-all overflow-hidden shadow-2xl">
+                <div className="h-36 w-full overflow-hidden relative">
+                  <img
+                    src={feature.image}
+                    alt={feature.title}
+                    className="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0A0A0A]" />
+                </div>
+                <div className="p-5">
+                  <div className="w-9 h-9 rounded-xl flex items-center justify-center mb-3 bg-slate-900 border border-white/10">
+                    <feature.icon className={`w-4 h-4 ${feature.color}`} />
+                  </div>
+                  <h3 className="text-lg font-bold mb-1.5">{feature.title}</h3>
+                  <p className="text-slate-400 leading-relaxed text-sm">{feature.description}</p>
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-              <p className="text-slate-400 leading-relaxed">
-                {feature.description}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
         </motion.div>
       </div>
     </div>

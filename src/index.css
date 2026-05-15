@@ -8,6 +8,11 @@
     color: #E0E0E0;
     font-family: ui-sans-serif, system-ui, sans-serif;
   }
+
+  /* Lock layout scroll container when mock interview is active */
+  body.interview-active .layout-scroll {
+    overflow: hidden !important;
+  }
 }
 
 @layer utilities {

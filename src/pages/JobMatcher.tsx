@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Briefcase, FileText, Loader2, Target } from "lucide-react";
+import CircularProgress from "../components/CircularProgress";
 
 export default function JobMatcher() {
   const [resumeContent, setResumeContent] = useState("");
@@ -38,9 +39,17 @@ export default function JobMatcher() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="max-w-4xl mx-auto">
-        <div className="mb-10 text-center">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">ATS Job Matcher</h1>
-          <p className="text-slate-400">See exactly how well your resume aligns with a specific job description.</p>
+        <div className="mb-10 text-center relative rounded-2xl overflow-hidden bg-slate-900">
+          <img
+            src="https://cdn.pixabay.com/photo/2017/08/10/08/47/laptop-2620118_1280.jpg"
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover opacity-40"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/40 via-[#050505]/70 to-[#050505]" />
+          <div className="relative z-10 py-12 px-4">
+            <h1 className="text-3xl md:text-4xl font-bold mb-4">ATS Job Matcher</h1>
+            <p className="text-slate-400">See exactly how well your resume aligns with a specific job description.</p>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
@@ -104,9 +113,9 @@ export default function JobMatcher() {
             className="mt-12 border border-cyan-500/30 rounded-2xl overflow-hidden bg-white/[0.02]"
           >
             <div className="p-6 border-b border-white/5 flex flex-col sm:flex-row items-center gap-6">
-                <div className="relative w-32 h-32 shrink-0 radial-progress flex items-center justify-center rounded-full border-[8px] border-indigo-500/20">
-                  <div className="absolute inset-0 rounded-full border-[8px] border-cyan-400 border-l-transparent border-b-transparent transform rotate-45"></div>
-                  <div className="text-center">
+                <div className="relative shrink-0 flex items-center justify-center">
+                  <CircularProgress value={result.matchPercentage} size={128} stroke={8} />
+                  <div className="absolute text-center">
                       <span className="text-4xl font-black text-white block leading-none">{result.matchPercentage}%</span>
                       <span className="text-xs text-gray-400">Match</span>
                   </div>

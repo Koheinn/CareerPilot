@@ -1,10 +1,35 @@
+# Dependencies
 node_modules/
-build/
-dist/
-coverage/
-.DS_Store
-*.log
-.env*
-!.env.example
 
+# Build output
+dist/
+build/
+coverage/
+
+# Environment — never commit real secrets
+.env
+.env.local
+.env.production
+.env.*.local
+
+# Firebase service account key — NEVER commit
+*.json
+!package.json
+!package-lock.json
+!tsconfig.json
+!tsconfig.*.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Prisma generated
 /src/generated/prisma
+
+# Editor
+.vscode/
+.idea/
