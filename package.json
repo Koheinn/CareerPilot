@@ -9,7 +9,7 @@
   "preview": "vite preview",
   "lint": "tsc --noEmit",
   "postinstall": "prisma generate",
-  "start": "node dist/server.js",
+  "start": "node dist-server/server.js",
   "push": "prisma db push",
   "docker:build": "docker build -t careerpilot:latest .",
   "docker:run": "docker-compose up -d"
