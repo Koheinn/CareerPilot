@@ -17,8 +17,8 @@
 
 ## 📸 Screenshots
 
-### Setup Screen
-![CareerPilot Setup](https://via.placeholder.com/1200x400?text=Interview+Setup+Screen)
+### Startup Screen
+<p><img src="screenshots/StartUp_Screen.png"/></p>
 
 ### Video Interview Mode
 ![Video Interview](https://via.placeholder.com/1200x400?text=Video+Interview+Mode)
