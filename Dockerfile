@@ -28,7 +28,7 @@ COPY package*.json ./
 COPY prisma ./prisma/
 
 # IMPORTANT: prevent postinstall crash dependency order
-RUN npm ci --omit=dev
+RUN npm ci
 
 # copy build output only
 COPY --from=builder /app/dist ./dist
@@ -37,4 +37,4 @@ COPY --from=builder /app/node_modules/@prisma/client ./node_modules/@prisma/clie
 
 EXPOSE 3000
 
-CMD ["npx", "tsx", "server.ts"]
+CMD ["npm", "start"]
