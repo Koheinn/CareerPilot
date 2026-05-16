@@ -37,4 +37,4 @@ COPY --from=builder /app/node_modules/@prisma/client ./node_modules/@prisma/clie
 
 EXPOSE 3000
 
-CMD ["node", "dist/server.js"]
+CMD ["npx", "tsx", "server.ts"]
