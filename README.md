@@ -21,13 +21,13 @@
 <p><img src="screenshots/StartUp_Screen.png"/></p>
 
 ### Video Interview Mode
-![Video Interview](https://via.placeholder.com/1200x400?text=Video+Interview+Mode)
+<p><img src="screenshots/Video_Interview_Mode.png"/></p>
 
 ### Chat Interview Mode  
-![Chat Interview](https://via.placeholder.com/1200x400?text=Chat+Interview+Mode)
+<p><img src="screenshots/Chat_Interview_Mode.png"/></p>
 
 ### Dashboard & Results
-![Dashboard Results](https://via.placeholder.com/1200x400?text=Interview+Results+Dashboard)
+<p><img src="screenshots/Dashboard_and_Results.png"/></p>
 
 ---
 
