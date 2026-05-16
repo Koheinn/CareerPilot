@@ -1,35 +1,44 @@
-# ── Stage 1: Build ────────────────────────────────────────────
+# ──────────────── 1. BUILD STAGE ────────────────
 FROM node:20-alpine AS builder
 
 WORKDIR /app
 
+# Install dependencies first (better caching)
 COPY package*.json ./
 COPY prisma ./prisma/
 
-RUN npm install
+RUN npm ci
 
+# Copy source
 COPY . .
 
+# Generate Prisma client + build
 RUN npx prisma generate
 RUN npm run build
 
-# ── Stage 2: Production ───────────────────────────────────────
+
+# ──────────────── 2. PRODUCTION STAGE ────────────────
 FROM node:20-alpine
 
 WORKDIR /app
 
 ENV NODE_ENV=production
 
+# Only production deps
 COPY package*.json ./
-COPY prisma ./prisma/
+RUN npm ci --omit=dev
 
-RUN npm install --omit=dev
-
+# Copy only built output (IMPORTANT)
 COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/server.ts ./server.ts
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/careerpilot-d81a9-firebase-adminsdk-fbsvc-7751b55e1d.json ./
+COPY --from=builder /app/prisma ./prisma
+
+# If using Prisma, include generated client safely
+COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
+
+# DO NOT copy Firebase JSON here (use env instead)
+# COPY firebase.json ❌ REMOVE THIS
 
 EXPOSE 3000
 
-CMD ["npx", "tsx", "server.ts"]
+# Run compiled JS (NOT tsx)
+CMD ["node", "dist/server.js"]
