@@ -591,7 +591,7 @@ async function startServer() {
       vite.middlewares(req, res, next);
     });
   } else {
-    const distPath = path.join(path.dirname(new URL(import.meta.url).pathname), "dist");
+    const distPath = path.resolve(process.cwd(), "dist");
     app.use(express.static(distPath, { maxAge: "1y", etag: true }));
     app.get("*", (req, res) => {
       if (req.path.startsWith("/api")) return res.status(404).json({ error: "Not found" });
