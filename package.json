@@ -5,11 +5,11 @@
   "type": "module",
   "scripts": {
   "dev": "tsx server.ts",
-  "build": "prisma generate && vite build",
+  "build": "prisma generate && tsc && vite build",
   "preview": "vite preview",
   "lint": "tsc --noEmit",
   "postinstall": "prisma generate",
-  "start": "tsx server.ts",
+  "start": "node dist/server.js",
   "push": "prisma db push",
   "docker:build": "docker build -t careerpilot:latest .",
   "docker:run": "docker-compose up -d"
