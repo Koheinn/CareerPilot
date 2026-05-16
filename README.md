@@ -9,7 +9,7 @@
 
 **Master your interview skills with AI-powered mock interviews in real-time**
 
-[Live Demo](#deployment) • [Features](#-features) • [Tech Stack](#-tech-stack) • [Setup](#-getting-started) • [Deploy](#-deployment-on-render)
+[Features](#-features) • [Tech Stack](#-tech-stack) • [Setup](#-getting-started) • [Deploy](#-deployment-on-render)
 
 ---
 
