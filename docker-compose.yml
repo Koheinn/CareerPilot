@@ -7,24 +7,19 @@ services:
       dockerfile: Dockerfile
 
     image: careerpilot:latest
-    container_name: careerpilot_app
 
     restart: unless-stopped
 
     ports:
       - "3000:3000"
 
-    env_file:
-      - .env
-
     environment:
       NODE_ENV: production
-
-    command: npm start
+      PORT: 3000
 
     healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://localhost:3000/api/health"]
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/api/health', r => process.exit(r.statusCode === 200 ? 0 : 1)).on('error', () => process.exit(1))"]
       interval: 30s
-      timeout: 5s
+      timeout: 10s
       retries: 3
-      start_period: 15s
+      start_period: 20s
