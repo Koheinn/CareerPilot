@@ -17,7 +17,7 @@ import { getAuth } from "firebase-admin/auth";
 
 const require = createRequire(import.meta.url);
 
-const serviceAccount = require("./careerpilot-d81a9-firebase-adminsdk-fbsvc-7751b55e1d.json");
+const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY || "{}");
 
 // ── Init Firebase Admin ────────────────────────────────────────
 if (!getApps().length) {
