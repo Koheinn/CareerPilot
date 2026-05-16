@@ -583,7 +583,7 @@ async function startServer() {
   // ── VITE / STATIC ────────────────────────────────────────────
   if (!IS_PROD) {
     const vite = await createViteServer({
-      server: { middlewareMode: true },
+      server: { middlewareMode: true, allowedHosts: true},
       appType: "spa",
     });
     app.use((req, res, next) => {
