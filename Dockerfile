@@ -21,17 +21,20 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 
-# install OpenSSL (fix Prisma warning)
 RUN apk add --no-cache openssl
 
 COPY package*.json ./
 COPY prisma ./prisma/
 
-# IMPORTANT: prevent postinstall crash dependency order
-RUN npm ci
+RUN npm ci --omit=dev
 
-# copy build output only
+# frontend build
 COPY --from=builder /app/dist ./dist
+
+# backend build (IMPORTANT FIX)
+COPY --from=builder /app/dist-server ./dist-server
+
+# prisma runtime files
 COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
 COPY --from=builder /app/node_modules/@prisma/client ./node_modules/@prisma/client
 
