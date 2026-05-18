@@ -17,6 +17,22 @@
 ### 🌐 Live Demo
 https://careerpilot-o9ih.onrender.com
 
+<p>
+  <h3>StartUp Screen</h3>
+  <img src="screenshots/StartUp_Screen.png"/>
+</p>
+<p>
+  <h3>Chat Interview Mode</h3>
+  <img src="screenshots/Chat_Interview_Mode.png"/>
+</p>
+<p>
+  <h3>Video Interview Mode</h3>
+  <img src="screenshots/Video_Interview_Mode.png"/>
+</p>
+<p>
+  <h3>Dashboard & Results</h3>
+  <img src="screenshots/Dashboard_and_Results.png"/>
+</p>
 ---
 
 ### ✨ Features
